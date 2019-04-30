@@ -1,0 +1,96 @@
+plugins {
+    id 'groovy'
+    id 'java'
+    id 'application'
+    id "io.freefair.lombok" version "3.1.4"
+}
+
+group 'yvolejn3'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+project.ext {
+    version_groovy = "2.5.6"
+    version_camel = "2.23.1"
+    version_log4j = "2.7"
+    version_guice = "4.0"
+    version_guava = "27.1-jre"
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = [] // no source dirs for the java compiler
+        }
+        groovy {
+            srcDirs = ['src/main/java', 'src/main/groovy']
+        }
+    }
+}
+
+repositories {
+    maven { url "https://jitpack.io" }
+    mavenCentral()
+    jcenter()
+    
+}
+
+dependencies {
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile group: 'com.squareup.retrofit2', name: 'converter-jackson', version: '2.5.0'
+    compile "org.codehaus.groovy:groovy-all:${version_groovy}"
+
+    compile "com.google.inject:guice:${version_guice}"
+    compile "com.google.inject.extensions:guice-assistedinject:${version_guice}"
+    compile "com.google.inject.extensions:guice-multibindings:${version_guice}"
+    
+    compile "com.google.guava:guava:${version_guava}"
+
+    compile "org.apache.camel:camel-parent:${version_camel}"
+    compile "org.apache.camel:camel-jetty:${version_camel}"
+    compile "org.apache.camel:camel-servlet:${version_camel}"
+    compile "org.apache.camel:camel-guice:${version_camel}"
+    compile "org.apache.camel:camel-jackson:${version_camel}"
+    compile "org.apache.camel:camel-stream:${version_camel}"
+    compile "org.apache.camel:camel-undertow:${version_camel}"
+    compile "org.apache.camel:camel-swagger-java:${version_camel}"
+
+    // JWT for JVM
+    compile "io.jsonwebtoken:jjwt:0.9.0"
+
+    compile "org.apache.logging.log4j:log4j-api:${version_log4j}"
+    compile "org.apache.logging.log4j:log4j-core:${version_log4j}"
+    compile "org.apache.logging.log4j:log4j-jcl:${version_log4j}"
+    compile "org.apache.logging.log4j:log4j-slf4j-impl:${version_log4j}"
+
+    compile "org.jdbi:jdbi3-core:3.7.0"
+    compile "org.jdbi:jdbi3-sqlobject:3.7.0"
+
+    compile "com.zaxxer:HikariCP:2.7.8"
+
+    compile "mysql:mysql-connector-java:8.0.15"
+
+    compile "com.github.binance-exchange:binance-java-api:master-SNAPSHOT"
+
+
+    // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.7'
+
+    //JUnit5
+    testCompile "org.junit.jupiter:junit-jupiter:5.4.0"
+    testCompile "org.apache.camel:camel-test:${version_camel}"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+application {
+    mainClassName = 'org.apache.camel.guice.Main'
+}
+
+run {
+    main = 'org.apache.camel.guice.Main'
+    args = ["-j", "/guicejndi.properties"]
+}
