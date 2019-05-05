@@ -11,8 +11,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                sh "whoami"
-                sh "docker pull 192.168.1.103:5000/service:latest"
+                sh "docker pull localhost:5000/service:latest"
             }
         }
     }
