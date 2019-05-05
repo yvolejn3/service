@@ -4,8 +4,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                chmod a+x gradlew
-                ./gradlew --no-daemon jib
+                sh chmod a+x gradlew
+                sh ./gradlew --no-daemon jib
             }
         }
         stage('Test') {
