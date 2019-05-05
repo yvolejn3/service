@@ -19,8 +19,7 @@ class AuthService extends AbstractRestRouteBuilder {
         rest()
                 .get()
                 .route()
-                .setBody(constant("Привет, Илья! Остальные маршруты только по JWT токену. Получить токен можно по /auth через Basic аутентификацию"))
-                .process({ log.info("Зашли на главную") })
+                .setBody(constant("Hello world"))
                 .endRest()
 
         rest("/auth")
