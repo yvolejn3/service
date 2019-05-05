@@ -18,12 +18,6 @@ class FaultProcessor implements Processor {
         //e.printStackTrace();
 
         setErrorMessage(exchange, e)
-
-        if (exchange.getPattern().isOutCapable()) {
-            exchange.out.body = exchange.message.body
-            exchange.message.body = null
-            exchange.out.headers.putAll(exchange.message.headers)
-        }
     }
 
     private static void setErrorMessage(Exchange exchange, HttpResponseException e) throws Exception {
