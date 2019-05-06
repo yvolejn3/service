@@ -72,9 +72,9 @@ public class Config extends CamelModuleWithMatchingRoutes {
         kmp.setKeyPassword(password);
         scp.setKeyManagers(kmp);
 
-        SSLContextServerParameters scsp = new SSLContextServerParameters();
-        scsp.setClientAuthentication(ClientAuthentication.WANT.name());
-        scp.setServerParameters(scsp);
+        /*SSLContextServerParameters scsp = new SSLContextServerParameters();
+        //scsp.setClientAuthentication(ClientAuthentication.WANT.name());
+        scp.setServerParameters(scsp);*/
 
         return scp;
     }
