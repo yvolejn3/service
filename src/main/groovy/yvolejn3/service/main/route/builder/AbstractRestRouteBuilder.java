@@ -27,6 +27,7 @@ public abstract class AbstractRestRouteBuilder extends RouteBuilder {
 
         restConfiguration()
                 .component("jetty")
+                .endpointProperty("sslContextParameters", "mySslContextParameters")
                 .host(hostname)
                 .port(port)
                 .enableCORS(true) // <-- Important
@@ -34,6 +35,9 @@ public abstract class AbstractRestRouteBuilder extends RouteBuilder {
                 .corsHeaderProperty("Access-Control-Allow-Origin", "*")
                 .corsHeaderProperty("Access-Control-Allow-Headers", "Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization")
                 .bindingMode(RestBindingMode.json);
+
+
+
 
         errorHandler(defaultErrorHandler());
 
