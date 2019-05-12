@@ -1,4 +1,4 @@
-###Создание хранилища ключей
+##Создание хранилища ключей
 
 `$JAVA_HOME/bin/keytool -genkey -dname <DN> -alias <name> -validity <days> -keyalg RSA -keystore <path> -keypass <keypass> -storepass <storepass> -ext san=<SAN>`
 
