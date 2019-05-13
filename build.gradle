@@ -111,6 +111,11 @@ jib {
         image = "192.168.1.103:5000/service:latest"
     }
     container {
+        jvmFlags = ["-Dcom.sun.management.jmxremote",
+                    "-Dcom.sun.management.jmxremote.port=4444",
+                    "-Dcom.sun.management.jmxremote.authenticate=false",
+                    "-Dcom.sun.management.jmxremote.ssl=false",
+                    "-Djava.rmi.server.hostname=0.0.0.0"]
         args = ['-j', '/guicejndi.properties']
         ports = ['8090/tcp']
         mainClass = 'org.apache.camel.guice.Main'
