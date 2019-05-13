@@ -15,7 +15,7 @@ pipeline {
                 sh 'docker pull localhost:5000/service'
                 sh 'docker stop service'
                 sh 'docker rm service'
-                sh 'docker run --name=service --restart=always -p 443:8090,4444:4444 -d localhost:5000/service'
+                sh 'docker run --name=service --restart=always -p 443:8090 -p 4444:4444 -d localhost:5000/service'
             }
         }
     }
