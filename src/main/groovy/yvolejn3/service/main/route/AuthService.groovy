@@ -27,9 +27,8 @@ class AuthService extends AbstractRestRouteBuilder {
                     def size = it.getIn().getHeader("size", 0, Integer)
                     if (millis) sleep(millis)
 
-
                     def content = IntStream.rangeClosed(0, size)
-                            .mapToObj()
+                            .boxed()
                             .collect(Collectors.toMap({ it }, { UUID.randomUUID() }))
                     Map<String, Object> body = [
                             "size"   : size,
