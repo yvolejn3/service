@@ -3,6 +3,7 @@ package yvolejn3.service.main.route
 import com.google.inject.Inject
 import com.google.inject.Provider
 import groovy.util.logging.Log4j2
+import org.apache.camel.model.dataformat.JsonLibrary
 import yvolejn3.service.main.route.builder.AbstractRestRouteBuilder
 import yvolejn3.service.main.route.helper.AuthHelper
 
@@ -36,7 +37,7 @@ class AuthService extends AbstractRestRouteBuilder {
                     it.getIn().setBody(body)
                 })
                 .marshal()
-                .json(true)
+                .json(JsonLibrary.Jackson, true)
                 .endRest()
 
         rest("/auth")
