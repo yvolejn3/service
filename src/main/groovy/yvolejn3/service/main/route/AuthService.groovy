@@ -35,7 +35,8 @@ class AuthService extends AbstractRestRouteBuilder {
                             "content": content]
                     it.getIn().setBody(body)
                 })
-                //.setBody(constant("Hello world"))
+                .marshal()
+                .json(true)
                 .endRest()
 
         rest("/auth")
