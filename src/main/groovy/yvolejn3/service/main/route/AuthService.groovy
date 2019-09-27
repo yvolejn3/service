@@ -19,6 +19,10 @@ class AuthService extends AbstractRestRouteBuilder {
         rest()
                 .get()
                 .route()
+                .process({
+                    def sleep = it.getIn().getHeader("sleep", Integer)
+                    if (sleep) sleep(sleep)
+                })
                 .setBody(constant("Hello world"))
                 .endRest()
 

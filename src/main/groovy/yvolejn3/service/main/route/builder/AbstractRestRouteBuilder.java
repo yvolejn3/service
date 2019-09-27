@@ -26,7 +26,7 @@ public abstract class AbstractRestRouteBuilder extends RouteBuilder {
     public void configure() {
 
         restConfiguration()
-                .component("jetty")
+                .component("undertow")
                 .endpointProperty("sslContextParameters", "mySslContextParameters")
                 .host(hostname)
                 .port(port)
