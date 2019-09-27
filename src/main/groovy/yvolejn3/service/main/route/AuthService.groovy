@@ -24,11 +24,11 @@ class AuthService extends AbstractRestRouteBuilder {
                 .route()
                 .process({
                     def millis = it.getIn().getHeader("sleep", Integer)
-                    def size = it.getIn().getHeader("size", Integer)
+                    def size = it.getIn().getHeader("size", 0, Integer)
                     if (millis) sleep(millis)
 
 
-                    def content = IntStream.range(0, size)
+                    def content = IntStream.rangeClosed(0, size)
                             .mapToObj()
                             .collect(Collectors.toMap({ it }, { UUID.randomUUID() }))
                     Map<String, Object> body = [
