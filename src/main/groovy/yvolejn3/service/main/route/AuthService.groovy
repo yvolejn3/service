@@ -37,6 +37,7 @@ class AuthService extends AbstractRestRouteBuilder {
                     ]
                     it.getIn().setBody(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(body))
                 })
+        .convertBodyTo(String.class)
                 .endRest()
 
         rest("/auth")
