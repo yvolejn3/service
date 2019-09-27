@@ -15,7 +15,6 @@ class AuthService extends AbstractRestRouteBuilder {
 
     @Inject
     Provider<AuthHelper> authHelper
-    ObjectMapper mapper = new ObjectMapper()
 
     @Override
     void configure() {
@@ -35,9 +34,8 @@ class AuthService extends AbstractRestRouteBuilder {
                             "size"   : size,
                             "content": content
                     ]
-                    it.getIn().setBody(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(body))
+                    it.getIn().setBody(body)
                 })
-        .convertBodyTo(String.class)
                 .endRest()
 
         rest("/auth")
